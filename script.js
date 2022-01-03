@@ -72,7 +72,7 @@ function game(){
         }
     }
 
-    alert("Computer wins " +  ComputerWin + " times and you win " + PlayerWin + " times.")
+    alert("Computer won " +  ComputerWin + " times and you won " + PlayerWin + " times.")
 
 }
 
