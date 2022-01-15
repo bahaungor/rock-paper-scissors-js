@@ -5,11 +5,37 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./style.css">
-        <script src="./script.js"></script>
+        <script src="./script.js" defer></script>
         <title>Rock Paper Scissors Game With JS</title>
     </head>
     <body>
-        <h1>Simple Rock Paper Scissors game written with JavaScript!</h1>
-        <p style="text-align: right; margin-right: 250px;">-Written by Bahadir Ungor</p>
+        <div class="title">
+            Rock Paper Scissors Game
+        </div>
+        <div class="info">
+            World is taken over by machines. <br>
+            Only way to save the world is... <br>
+            Beat the machines in a game of Rock Paper Scissors!
+        </div>
+        <div class="subtitle">
+            Choose your weapon:
+        </div>
+        <div class="winner"></div>
+        <div class="boxes">
+            <div class="rock box"><img src="./images/rock.png" alt="rock"></div>
+            <div class="paper box"><img src="./images/paper.png" alt="paper"></div>
+            <div class="scissors box"><img src="./images/scissors.png" alt="scissors"></div>
+        </div>
+        <div class="status"></div>
+        <div class="score-container">
+            <div class="player">
+                <div class="score-tag">You:</div>
+                <div class="player-score"></div>
+            </div>
+            <div class="computer">
+                <div class="score-tag">Computer: </div>
+                <div class="computer-score"></div>
+            </div>
+        </div>
     </body>
 </html>

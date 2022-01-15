@@ -22,58 +22,64 @@ function computerPlay() {
     }
 }
 
-function rockPaperScissors (playerSelection, computerSelection){
-    console.log("rockPaperScissors function is called");
-    console.log("Computer selection is " + computerSelection + " and player selection is " + playerSelection);
+function decideWinner (playerSelection, computerSelection){
     if (computerSelection == "ROCK" && playerSelection.toUpperCase() == "ROCK"){
-        alert("Rock vs Rock! It's a tie!") ;
+        return "Rock vs Rock! It's a tie!";
     } else if (computerSelection == "ROCK" && playerSelection.toUpperCase() == "PAPER") {
         PlayerWin++;
-        alert("Paper beats Rock! You Win!");
+        return "Paper beats Rock! You Win!";
     } else if (computerSelection == "ROCK" && playerSelection.toUpperCase() == "SCISSORS") {
         ComputerWin++;
-        alert("Rock beats Scissors! You Lose!");
+        return "Rock beats Scissors! You Lose!";
     } else if (computerSelection == "PAPER" && playerSelection.toUpperCase() == "ROCK") {
         ComputerWin++;
-        alert("Paper beats Rock! You Lose!");
+        return "Paper beats Rock! You Lose!";
     } else if (computerSelection == "PAPER" && playerSelection.toUpperCase() == "PAPER") {
-        alert("Paper vs Paper! It's a tie!");
+        return "Paper vs Paper! It's a tie!";
     } else if (computerSelection == "PAPER" && playerSelection.toUpperCase() == "SCISSORS") {
         PlayerWin++;
-        alert("Scissors beats Paper! You Win!");
+        return "Scissors beats Paper! You Win!";
     } else if (computerSelection == "SCISSORS" && playerSelection.toUpperCase() == "SCISSORS") {
-        alert("Scissors vs Scissors! It's a tie!");
+        return "Scissors vs Scissors! It's a tie!";
     } else if (computerSelection == "SCISSORS" && playerSelection.toUpperCase() == "PAPER") {
         ComputerWin++;
-        alert("Scissors beats Paper! You Lose!");
+        return "Scissors beats Paper! You Lose!";
     } else if (computerSelection == "SCISSORS" && playerSelection.toUpperCase() == "ROCK") {
         PlayerWin++;
-        alert("Rock beats Scissors! You Win!");
+        return "Rock beats Scissors! You Win!";
     } else {
-        alert("Something went wrong with rockPaperScissors function. Please refresh the page.");
+        return "Something went wrong with rockPaperScissors function. Please refresh the page.";
     }
 }
+const rock = document.querySelector(".rock");
+const paper = document.querySelector(".paper");
+const scissors = document.querySelector(".scissors");
+const boxes = document.querySelectorAll(".box")
+const computerScore = document.querySelector(".computer-score");
+const playerScore = document.querySelector(".player-score");
+const statusBox = document.querySelector(".status");
+
+computerScore.textContent = ComputerWin;
+playerScore.textContent = PlayerWin;
+let computerSelection;
+
+function endGame(){
+    console.log("this loop is entered")
+    boxes.forEach(box => box.removeEventListener("click", () => {
+        if (ComputerWin == 5 ) statusBox.textContent = "Computers win :(";
+        if (PlayerWin == 5 ) statusBox.textContent = "You win :)";
+    }) );
+} 
+
+boxes.forEach(box => box.addEventListener ("click", function() {
+    computerSelection = computerPlay();
+    statusBox.textContent = decideWinner(this.classList[0], computerPlay());
+    computerScore.textContent = ComputerWin;
+    playerScore.textContent = PlayerWin;
+    console.log("computer win is " + ComputerWin)
+    console.log("player win is " + PlayerWin)
+    if (ComputerWin == 5 || PlayerWin == 5) endGame(); 
+}))
 
 
-function game(){
-    console.log("game function is called.")
-    for (let index = 0; index <= 5; index++) {
-        console.log("You are inside for loop.")
-        computerSelection = computerPlay();
-        console.log("Computer selection is " + computerSelection);
-        playerSelection = prompt("Rock, Paper or Scissors?");
-        console.log("Player selection is " + playerSelection);
-        if (playerSelection.toUpperCase() == "ROCK" || playerSelection.toUpperCase() == "PAPER" || playerSelection.toUpperCase() == "SCISSORS"){
-            rockPaperScissors(playerSelection, computerSelection);
-            console.log("Computer selection is " + computerSelection + " and player selection is " + playerSelection);
-        } else {
-            console.log("Computer selection is " + computerSelection + " and player selection is " + playerSelection);
-            alert("You should input \"Rock\", \"Paper\" or \"Scissors\".");
-        }
-    }
 
-    alert("Computer won " +  ComputerWin + " times and you won " + PlayerWin + " times.")
-
-}
-
-game();
