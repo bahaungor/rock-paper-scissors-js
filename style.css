@@ -38,19 +38,6 @@ body{
     gap: 25px;
 }
 
-.rock {
-
-}
-
-.paper {
-
-}
-
-.scissors {
-
-
-}
-
 .box {
     border: 2px solid gray;
     flex: 1 1 auto;
