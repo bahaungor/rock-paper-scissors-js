@@ -1,10 +1,20 @@
 body{
     display: flex;
     flex-direction: column;
+    justify-content: center;
     text-align: center;
     margin: 0;
     font-family: monospace;
 }
+
+.button{
+    max-width: 250px; 
+    padding: 10px 15px; 
+    background-color: bisque; 
+    font-size: 20px; 
+    border-radius: 10px;
+}
+
 .title {
     font-size: 40px;
     background-color: bisque;
@@ -16,20 +26,40 @@ body{
 }
 
 .info {
-    padding: 50px 40px;
+    padding: 20px 10px;
     font-size: 20px;
     line-height: 30px;
 }
 
 .subtitle {
-    padding: 15px 15px;
+    padding: 15px 10px;
     font-size: 30px;
     font-weight: 600;
 }
 
-.winner {
-
+.footer {
+    background-color: rgb(28, 28, 70);
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 15px 10px;
+    margin-top: 20px;
 }
+
+.selections{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.player-selection , .computer-selection {
+    max-width: 170px;
+    height: auto;
+    border: 2px solid gray;
+    flex: 1 1 auto;
+    padding: 20px;
+}
+
 
 .boxes {
     display: flex;
@@ -58,7 +88,7 @@ img {
     font-size: 20px;
     padding: 15px 15px;
     display: flex;
-    gap: 50px;
+    gap: 100px;
     justify-content: center;
 }
 
@@ -68,6 +98,7 @@ img {
 
 .status {
     font-size: 20px;
+    padding: 15px 10px;
 }
 
 .clickable {

@@ -6,6 +6,19 @@ const boxes = document.querySelectorAll(".box");
 const statusBox = document.querySelector(".status");
 const playerScoreBox = document.querySelector(".player-score");
 const computerScoreBox = document.querySelector(".computer-score");
+const playerSelection = document.querySelector(".player-selection > img");
+const computerSelection = document.querySelector(".computer-selection > img");
+const playerBox = document.querySelector(".player-selection")
+const computerBox = document.querySelector(".computer-selection")
+const images = document.querySelectorAll("img");
+const subtitle = document.querySelector(".subtitle")
+const btn = document.createElement("button");
+const div = document.createElement("div");
+btn.innerHTML = "Restart the game";
+btn.classList.add("button");
+btn.setAttribute("onClick", "window.location.reload();");
+const footer = document.querySelector(".footer");
+const body = document.querySelector("body");
 playerScoreBox.textContent = "0";
 computerScoreBox.textContent = "0";
 
@@ -33,13 +46,20 @@ function updateStatus(){
     if (playerScore == 5) {
         statusBox.textContent = "You Win! World Is Saved!";
     } else if (computerScore == 5) {
-        statusBox.textContent = "Computer Win, All Is Lost :(";
+        statusBox.textContent = "Machines Won, All Is Lost :(";
     } else {
-        statusBox.textContent = "Something went wrong!";
+
     }
 }
 
 function endGame(){
+    images.forEach(image => image.remove());
+    boxes.forEach(box => box.remove());
+    playerBox.remove();
+    computerBox.remove();
+    subtitle.remove();
+    body.insertBefore(div, footer);
+    div.appendChild(btn);
     boxes.forEach(box => box.classList.remove("clickable"));
     boxes.forEach(box => box.removeEventListener("click", updateStatus()));
 }
@@ -92,5 +112,9 @@ function playRound(){
 boxes.forEach(box => box.addEventListener("click", function(e){
         playerHand = this.classList[0];
         computerPlay();
+        console.log(playerSelection.src)
+        playerSelection.src = this.lastChild.src;
+        computerSelection.src = "./images/" + computerHand + ".png";
+        console.log(computerSelection.src);
         playRound();
 }));
