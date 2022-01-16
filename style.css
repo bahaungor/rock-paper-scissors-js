@@ -50,6 +50,7 @@ body{
     display: flex;
     justify-content: center;
     gap: 15px;
+    padding: 0 15px;
 }
 
 .player-selection , .computer-selection {
