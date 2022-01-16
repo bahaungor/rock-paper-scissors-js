@@ -60,7 +60,6 @@ body{
     align-items: center;
     justify-content: center;
     padding: 20px;
-    cursor: pointer;
 }
 
 img {
@@ -82,4 +81,8 @@ img {
 
 .status {
     font-size: 20px;
+}
+
+.clickable {
+    cursor: pointer;
 }
