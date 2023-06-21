@@ -1,5 +1,5 @@
-# OCR Model for Handwritten Text Recognition
-OCR model that reads text from given image.
+# Rock-Paper-Scissors Game
+Simple rock-paper-scissors game you can play against computer.
 
 Link to the website → [**Rock-Paper-Scissors**](https://bahaungor.github.io/rock-paper-scissors-js/)
 
