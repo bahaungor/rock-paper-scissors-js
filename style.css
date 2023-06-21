@@ -47,7 +47,16 @@ main{
     padding: 50px;
     text-align: center;
 }
-
+button{
+    align-self: center;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 10px;
+    background-color: #2e2e2e;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
 .choice-container, .choices-container{
     display: flex;
     justify-content: center;
@@ -61,7 +70,7 @@ main img{
     padding: 10px;
 }
 
-.warning-text, .selection{
+.warning-text, .selection, .game-over{
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: -16px;
@@ -69,4 +78,9 @@ main img{
 
 .selectable{
     cursor: pointer;
+    transition: all .07s ease;
+}
+
+.selectable:hover{
+    transform: scale(1.1);
 }
