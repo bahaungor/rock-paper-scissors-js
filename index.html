@@ -1,47 +1,41 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./style.css">
-        <script src="./script.js" defer></script>
-        <title>Rock Paper Scissors Game With JS</title>
-    </head>
-    <body>
-        <div class="title">
-            Rock Paper Scissors Game
-        </div>
-        <div class="info">
-            World is taken over by machines. Only way to save the world is... <br>
-            Beat the machines in a game of Rock Paper Scissors!
-        </div>
-        <div class="status"></div>
-        <div class="selections">
-            <div class="player-container">
-                <div class="player-selection"><img src="./images/question-mark.png" alt="player selection"></div>
-                <div class="player">
-                    <div class="score-tag">You:</div>
-                    <div class="player-score"></div>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors Game</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="header">Rock Paper Scissors Game</div>
+    </header>
+    <main>
+        <div class="main">
+            <div class="selection"></div>
+            <div class="choice-container">
+                <div class="user-choice-container">
+                    <img src="./images/question-mark.png" alt="question mark symbol" class="user-choice">
+                    <p>You: <span>0</span></p>
+                </div>
+                <div class="pc-choice-container">
+                    <img src="./images/question-mark.png" alt="question mark symbol" class="pc-choice">
+                    <p>Computer: <span>0</span></p>
                 </div>
             </div>
-            <div class="computer-container">
-                <div class="computer-selection"><img src="./images/question-mark.png" alt="computer selection"></div>
-                <div class="computer">
-                    <div class="score-tag">Machines: </div>
-                    <div class="computer-score"></div>
-                </div>
+            <div class="warning-text">Choose your weapon:</div>
+            <div class="choices-container">
+                <img class="selectable" data-select="rock" src="./images/rock.png" alt="rock image">
+                <img class="selectable" data-select="paper" src="./images/paper.png" alt="paper image">
+                <img class="selectable" data-select="scissors" src="./images/scissors.png" alt="scissors image">
             </div>
         </div>
-        <div class="subtitle">
-            Choose your weapon:
-        </div>
-        <div class="winner"></div>
-        <div class="boxes">
-            <div class="rock box clickable"><img src="./images/rock.png" alt="rock"></div>
-            <div class="paper box clickable"><img src="./images/paper.png" alt="paper"></div>
-            <div class="scissors box clickable"><img src="./images/scissors.png" alt="scissors"></div>
-        </div>
+    </main>
+    <footer>
         <div class="footer">Copyright © Bahadir UNGOR</div>
-    </body>
+    </footer>
+</body>
 </html>

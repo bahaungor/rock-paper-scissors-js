@@ -1,106 +1,86 @@
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
 body{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    margin: 0;
-    font-family: monospace;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.button{
-    max-width: 250px; 
-    padding: 10px 15px; 
-    background-color: bisque; 
-    font-size: 20px; 
-    border-radius: 10px;
+header{
+    font-size: 3rem;
+    font-weight: 700;
 }
 
-.title {
-    font-size: 40px;
-    background-color: bisque;
-    display: flex;
-    align-items: center;
-    padding: 10px 10px;
-    justify-content: center;
-    font-weight: 900;
-}
-
-.info {
-    padding: 20px 10px;
-    font-size: 20px;
-    line-height: 30px;
-}
-
-.subtitle {
-    padding: 15px 10px;
-    font-size: 30px;
-    font-weight: 600;
-}
-
-.footer {
-    background-color: rgb(28, 28, 70);
+header,footer{
+    background-color:#2e2e2e;
     color: white;
-    font-size: 18px;
-    font-weight: 500;
-    padding: 15px 10px;
-    margin-top: 20px;
 }
 
-.selections{
+.header,.footer{
+    max-width: 1200px;
+    align-self: center;
     display: flex;
     justify-content: center;
-    gap: 40px;
-    padding: 0 15px;
-}
-
-.player-selection , .computer-selection {
-    max-width: 170px;
-    height: auto;
-    border: 2px solid gray;
-    flex: 1 1 auto;
-    padding: 20px;
-}
-
-
-.boxes {
-    display: flex;
-    justify-content: center;
+    margin: 0 auto;
     padding: 10px 20px;
-    gap: 25px;
 }
 
-.box {
-    border: 2px solid gray;
-    flex: 1 1 auto;
-    max-width: 170px;
-    height: auto;
+main{
+    flex: 1;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-.player-container , .computer-container {
+.main{
+    flex: 1;
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    font-size: 20px;
+    gap: 4vh;
+    padding: 50px;
+    text-align: center;
 }
-
-.computer, .player {
-    display: flex;
-}
-
-.status {
-    font-size: 20px;
-    padding: 15px 10px;
-}
-
-.clickable {
+button{
+    align-self: center;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 10px;
+    background-color: #2e2e2e;
+    color: white;
+    font-size: 1.5rem;
     cursor: pointer;
+}
+.choice-container, .choices-container{
+    display: flex;
+    justify-content: center;
+    gap: 10%;
+}
+
+main img{
+    max-width: 200px;
+    width: 100%;
+    border: 2px solid darkgray;
+    padding: 10px;
+}
+
+.warning-text, .selection, .game-over{
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: -16px;
+}
+
+.selectable{
+    cursor: pointer;
+    transition: all .07s ease;
+}
+
+.selectable:hover{
+    transform: scale(1.1);
 }

@@ -1,120 +1,58 @@
-let playerScore = 0;
-let computerScore = 0;
-let computerHand;
-let playerHand;
-const boxes = document.querySelectorAll(".box");
-const statusBox = document.querySelector(".status");
-const playerScoreBox = document.querySelector(".player-score");
-const computerScoreBox = document.querySelector(".computer-score");
-const playerSelection = document.querySelector(".player-selection > img");
-const computerSelection = document.querySelector(".computer-selection > img");
-const playerBox = document.querySelector(".player-selection")
-const computerBox = document.querySelector(".computer-selection")
-const images = document.querySelectorAll("img");
-const subtitle = document.querySelector(".subtitle")
-const btn = document.createElement("button");
-const div = document.createElement("div");
-btn.innerHTML = "Restart the game";
-btn.classList.add("button");
-btn.setAttribute("onClick", "window.location.reload();");
-const footer = document.querySelector(".footer");
-const body = document.querySelector("body");
-playerScoreBox.textContent = "0";
-computerScoreBox.textContent = "0";
+const selections = document.querySelectorAll(".selectable");
+const selection = document.querySelector(".selection");
+const userChoice = document.querySelector(".user-choice");
+const pcChoice = document.querySelector(".pc-choice");
+const userScore = document.querySelector(".user-choice-container span")
+const pcScore = document.querySelector(".pc-choice-container span")
+const main = document.querySelector(".main")
 
-function computerPlay() {
-    computerHand = Math.floor(Math.random() * 3);
-    switch (computerHand) {
-        case 0:
-            return computerHand= "rock";
-            break;
-    
-        case 1:
-            return computerHand= "paper";
-            break;
+let playerScore=0;
+let computerScore=0;
+let round = 0;
 
-        case 2:
-            return computerHand= "scissors";
-            break;
+selections.forEach(selection => selection.addEventListener("click", playRound))
 
-        default:
-            break;
-    }
-}
-
-function updateStatus(){
-    if (playerScore == 5) {
-        statusBox.textContent = "You Win! World Is Saved!";
-    } else if (computerScore == 5) {
-        statusBox.textContent = "Machines Won, All Is Lost :(";
-    } else {
-
-    }
-}
-
-function endGame(){
-    images.forEach(image => image.remove());
-    boxes.forEach(box => box.remove());
-    playerBox.remove();
-    computerBox.remove();
-    subtitle.remove();
-    body.insertBefore(div, footer);
-    div.appendChild(btn);
-    boxes.forEach(box => box.classList.remove("clickable"));
-    boxes.forEach(box => box.removeEventListener("click", updateStatus()));
-}
-
-
-function checkRoundWinner(playerHand, computerHand){
-    if (playerHand == computerHand) {
-        statusBox.textContent = "It's a tie";
-    } else if (playerHand == "rock" && computerHand == "paper") {
-        computerScore++;
-        computerScoreBox.textContent = computerScore;
-        statusBox.textContent = "Paper  beats rock! You Lose :(";
-    } else if (playerHand == "rock" && computerHand == "scissors") {
+function playRound(e){
+    round++;
+    let playerSelection = this.dataset.select;
+    userChoice.src = `./images/${playerSelection}.png`
+    let computerSelection = getComputerChoice ();
+    pcChoice.src = `./images/${computerSelection}.png`
+    if (playerSelection == computerSelection) {
+        selection.textContent = 'It\'s a tie! Try one more round!';
+    } else if (
+        (playerSelection == 'rock' && computerSelection == 'scissors') ||
+        (playerSelection == 'paper' && computerSelection == 'rock') ||
+        (playerSelection == 'scissors' && computerSelection == 'paper')
+    ) {
+        selection.textContent = `You win! ${playerSelection} beats ${computerSelection}`,'user';
         playerScore++;
-        playerScoreBox.textContent = playerScore;
-        statusBox.textContent = "Rock beats Scissors! You Win!";
-    } else if (playerHand == "paper" && computerHand == "rock") {
-        playerScore++;
-        playerScoreBox.textContent = playerScore;
-        statusBox.textContent = "Paper  beats rock! You Win!";
-    } else if (playerHand == "paper" && computerHand == "scissors") {
-        computerScore++;
-        computerScoreBox.textContent = computerScore;
-        statusBox.textContent = "Scissors beats paper! You Lose :(";
-    } else if (playerHand == "scissors" && computerHand == "paper") {
-        playerScore++;
-        playerScoreBox.textContent = playerScore;
-        statusBox.textContent = "Scissors beats paper! You Win!";
-    } else if (playerHand == "scissors" && computerHand == "rock") {
-        computerScore++;
-        computerScoreBox.textContent = computerScore;
-        statusBox.textContent = "Rock beats scissors! You Lose :("
+        userScore.textContent = playerScore;
     } else {
-        return "Something went wrong. Please refresh the page.";
+        selection.textContent = `You lose! ${computerSelection} beats ${playerSelection}`,'computer';
+        computerScore++;
+        pcScore.textContent = computerScore;
     }
-    if (playerScore == 5 || computerScore == 5) {
-        endGame();
+
+    if ((round > 7) && (playerScore!=computerScore)) {
+        main.innerHTML = "";
+        const p = document.createElement('p');
+        p.classList.add("game-over")
+        const btn = document.createElement('button');
+        btn.innerHTML = 'Restart The Game';
+        btn.addEventListener('click', () => location.reload())
+        main.appendChild(p)
+        if(playerScore > computerScore){
+            p.textContent = `GAME OVER! Your score is ${playerScore}, PC score is ${computerScore}. You win!`
+        } else {
+            p.textContent = `GAME OVER! Your score is ${playerScore}, PC score is ${computerScore}. You lose!`
+        }
+        main.appendChild(btn)
     }
 }
 
-function playRound(){
-    if (playerScore == 5 || computerScore == 5) {
-        endGame();
-    } else {
-        checkRoundWinner(playerHand, computerHand);
-    }
+function getComputerChoice (){
+    let rand_num = Math.floor(Math.random() * 3);
+    let choice = (rand_num == 0) ? 'rock' : (rand_num == 1) ? 'paper' : 'scissors';
+    return choice;
 }
-
-
-boxes.forEach(box => box.addEventListener("click", function(e){
-        playerHand = this.classList[0];
-        computerPlay();
-        console.log(playerSelection.src)
-        playerSelection.src = this.lastChild.src;
-        computerSelection.src = "./images/" + computerHand + ".png";
-        console.log(computerSelection.src);
-        playRound();
-}));
