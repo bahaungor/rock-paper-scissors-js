@@ -60,7 +60,8 @@ button{
 .choice-container, .choices-container{
     display: flex;
     justify-content: center;
-    gap: 10%;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 main img{
